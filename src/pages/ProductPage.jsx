@@ -85,7 +85,7 @@ const ProductPage = () => {
               ))}
             </div>
             
-            <h1 style={{ fontSize: '3rem', marginBottom: '15px' }}>{product.name}</h1>
+            <h1 className="section-title" style={{ marginBottom: '15px' }}>{product.name}</h1>
             
             <div className="rating-summary" style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
               <div className="stars" style={{ display: 'flex', color: 'var(--secondary)' }}>

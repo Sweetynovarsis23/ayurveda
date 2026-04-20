@@ -180,7 +180,7 @@ const HomePage = () => {
       <section className="rituals-section" style={{ background: '#f5f7f5', padding: '120px 0' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '3rem' }}>Our Most Loved Rituals</h2>
+            <h2 className="section-title">Our Most Loved Rituals</h2>
             <p className="rituals-subtitle" style={{ maxWidth: '700px', margin: '20px auto 0', fontSize: '1.1rem' }}>
               Discover the essentials that have become the cornerstone of daily practice for our 10,000+ member community.
             </p>

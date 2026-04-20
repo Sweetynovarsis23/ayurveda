@@ -45,6 +45,14 @@ const Footer = () => {
             <input type="email" placeholder="Your email address" required />
             <button type="submit" className="btn btn-primary">Subscribe Now</button>
           </form>
+          <div className="payment-methods" style={{ marginTop: '24px', display: 'flex', gap: '12px', opacity: 0.6 }}>
+            <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', width: '100%' }}>Secure Payment via</span>
+            <div style={{ display: 'flex', gap: '15px', marginTop: '8px' }}>
+              <span style={{ fontWeight: '800', fontStyle: 'italic' }}>VISA</span>
+              <span style={{ fontWeight: '800', fontStyle: 'italic' }}>MasterCard</span>
+              <span style={{ fontWeight: '800', fontStyle: 'italic' }}>UPI</span>
+            </div>
+          </div>
         </div>
       </div>
       

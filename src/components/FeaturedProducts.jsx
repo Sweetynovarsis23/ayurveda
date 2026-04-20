@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import { products } from '../data/products';
+import QuickViewModal from './QuickViewModal';
 
 const FeaturedProducts = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleQuickView = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
   return (
     <section id="products" className="products-section">
       <div className="container">
@@ -13,11 +22,20 @@ const FeaturedProducts = () => {
         
         <div className="products-grid">
           {products.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              onQuickView={() => handleQuickView(product)}
+            />
           ))}
         </div>
       </div>
 
+      <QuickViewModal 
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

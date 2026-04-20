@@ -49,11 +49,36 @@ const HomePage = () => {
       rating: 4.6,
       reviews: 48,
       bestSeller: false,
-      image: "https://images.unsplash.com/photo-1602928321679-560bb453f190?q=80&w=800&auto=format&fit=crop"
+      image: "https://www.brillare.co.in/cdn/shop/files/AGE-REVIVAL-SERUM-MIST-1_0168a9d9-6ac4-440e-84b0-80b7af79497b.jpg?v=1752589060&width=1780"
     }
   ];
 
-
+  const testimonials = [
+    {
+      id: 1,
+      name: "Priya Sharma",
+      role: "Yoga Instructor",
+      text: "Prana Essence has completely transformed my daily routine. The Ashwagandha blend gives me sustained energy without the crash. I've never felt more aligned and focused.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      id: 2,
+      name: "Rohan Desai",
+      role: "Wellness Coach",
+      text: "Finding authentically sourced Ayurvedic supplements is rare. The transparency and quality from Prana Essence are unmatched. My clients love the Triphala detox.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      id: 3,
+      name: "Anita Mehra",
+      role: "Holistic Therapist",
+      text: "The Kumkumadi Tailam is a miracle in a bottle. Within two weeks, my skin's texture improved drastically. I appreciate the true cold-press extraction it uses.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=150"
+    }
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -94,7 +119,7 @@ const HomePage = () => {
           <div className="about-grid">
             <div className="about-visuals-dual">
               <div className="about-img-main">
-                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800" alt="Ingredients" />
+                <img src="https://plus.unsplash.com/premium_photo-1723928419895-525187cc1be1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXl1cnZlZGljJTIwcHJvZHVjdHN8ZW58MHwxfDB8fHww" alt="Ingredients" />
               </div>
               <div className="about-img-founder">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" alt="Founder" />
@@ -214,7 +239,38 @@ const HomePage = () => {
         </div>
       </section>
 
-
+      {/* Testimonials Section */}
+      <section className="testimonials-section" style={{ padding: '120px 0', background: 'var(--surface)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+            <span className="section-label" style={{ display: 'block', fontSize: '0.75rem', letterSpacing: '4px', textTransform: 'uppercase', color: 'var(--secondary)', marginBottom: '15px' }}>
+              Real Voices, Real Balance
+            </span>
+            <h2 className="section-title">Discover How Prana Essence Has Transformed Lives.</h2>
+          </div>
+          <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+            {testimonials.map(testimonial => (
+              <div key={testimonial.id} className="testimonial-card" style={{ background: '#f5f7f5', padding: '40px', borderRadius: '30px', position: 'relative' }}>
+                <div style={{ display: 'flex', color: 'var(--secondary)', marginBottom: '20px' }}>
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} size={18} fill="currentColor" />
+                  ))}
+                </div>
+                <p style={{ fontSize: '1.05rem', color: 'var(--text)', marginBottom: '30px', fontStyle: 'italic', lineHeight: '1.7' }}>
+                  "{testimonial.text}"
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <img src={testimonial.image} alt={testimonial.name} style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }} />
+                  <div>
+                    <h4 style={{ fontSize: '1rem', marginBottom: '2px', color: 'var(--primary)' }}>{testimonial.name}</h4>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{testimonial.role}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
 
     </main>

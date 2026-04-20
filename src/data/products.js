@@ -54,7 +54,7 @@ export const products = [
     tags: ["Detox", "Antioxidant Rich", "Caffeine Light"],
     description: "Detoxifying blend of organic moringa leaves and Himalayan green tea. Rich in antioxidants.",
     fullDescription: "A superfood blend that combines the nutrient density of Moringa leaves with the refreshing taste of Himalayan Green Tea. Perfect for a morning detox or a mid-day energy lift without the jitters.",
-    image: "https://images.unsplash.com/photo-1639241181542-b20bc1d0a1dc?q=80&w=800&auto=format&fit=crop",
+    image: "https://m.media-amazon.com/images/I/61FR9yCXykL._SL1000_.jpg",
     benefits: ["Detoxifies Body", "Boosts Metabolism", "Rich in Vitamins"],
     ingredients: ["Organic Moringa Leaves", "Himalayan Green Tea Leaves", "Lemon Peel"],
     instructions: "Steep 1 bag in hot water for 3-5 minutes.",

@@ -4,6 +4,9 @@ import FeaturedProducts from '../components/FeaturedProducts';
 const ShopPage = () => {
   return (
     <div className="shop-page fade-in" style={{ paddingTop: '80px' }}>
+      <style>{`
+        .shop-page .products-section { padding-top: 20px; }
+      `}</style>
       <div className="container">
         {/* <header className="shop-header" style={{ padding: '60px 0 20px', textAlign: 'center' }}>
           <h1>Our Full Collection</h1>

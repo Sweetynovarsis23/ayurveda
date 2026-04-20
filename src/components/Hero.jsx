@@ -24,15 +24,15 @@ const Hero = () => {
       <div className="container hero-content">
         <div className="hero-text">
           <span className="badge">100% Natural & Organic</span>
-          <h1>
-            <span>Ancient</span> <span>Wisdom</span> <span>Wellness</span>
+          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', lineHeight: '1.2' }}>
+            <span>Restore Balance.</span> <span>Awaken Vitality.</span> <span>Embrace True Wellness.</span>
           </h1>
           <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '30px' }}>
             Trusted by 10,000+ customers across India. Discover the power of Ayurveda with our curated collection of organic supplements.
           </p>
           <div className="hero-btns">
             <Link to="/shop" className="btn btn-primary" style={{ padding: '16px 32px', fontSize: '1.1rem' }}>
-              Shop Now <ArrowRight size={20} className="arrow-icon" style={{marginLeft: '10px'}} />
+              Start Your Wellness Journey <ArrowRight size={20} className="arrow-icon" style={{marginLeft: '10px'}} />
             </Link>
             <a href="#about" className="btn btn-outline" style={{marginLeft: '15px', padding: '16px 32px'}}>Explore Story</a>
           </div>

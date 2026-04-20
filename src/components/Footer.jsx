@@ -57,8 +57,9 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <div className="container">
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <p>&copy; {new Date().getFullYear()} AyurVeda Wellness. All rights reserved.</p>
+          <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Powered by NovarsisTech Pvt. Ltd.</p>
         </div>
       </div>
 

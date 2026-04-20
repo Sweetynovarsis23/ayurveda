@@ -1079,6 +1079,7 @@ button {
   overflow: hidden;
   box-shadow: 0 40px 100px rgba(0,0,0,0.5);
   transition: var(--transition-smooth);
+  background: #08380b; /* Match section background to hide gaps */
 }
 
 .phil-img-lg img {
@@ -1087,6 +1088,7 @@ button {
   object-fit: cover;
   object-position: top;
   display: block;
+  transform: scale(1.02); /* Ensure image bleeds past container edges */
 }
 
 .phil-img-sm {

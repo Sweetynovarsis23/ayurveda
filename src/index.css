@@ -386,26 +386,38 @@ button {
     display: block;
   }
 
+  .navbar {
+    width: 95%;
+    padding: 0 20px;
+    height: 60px;
+    top: 10px;
+    border-radius: 50px;
+  }
+
   .nav-links {
-    position: absolute;
+    position: fixed;
     top: 80px;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    width: 90%;
     background: var(--surface);
     flex-direction: column;
-    padding: 40px;
+    padding: 30px;
     text-align: center;
-    transform: translateY(-100%);
+    gap: 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
     opacity: 0;
     pointer-events: none;
-    transition: var(--transition);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999;
   }
 
   .nav-links.active {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
     pointer-events: all;
-    box-shadow: var(--shadow-md);
   }
 }
 
@@ -488,13 +500,14 @@ button {
   left: 10%;
 }
 
-.hero-content {
+.hero-inner {
   position: relative;
   z-index: 10;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
   align-items: center;
+  padding-bottom: 60px;
 }
 
 /* Hero Text & Typography */
@@ -676,15 +689,12 @@ button {
   }
 }
 
-/* Proof Bar */
-.hero-proof-bar {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
-  z-index: 20;
+/* Proof Bar — inline flow (no absolute positioning) */
+.hero-proof-bar-inline {
+  position: relative;
+  z-index: 10;
+  margin-top: 20px;
+  padding-bottom: 40px;
 }
 
 .proof-content {
@@ -1873,11 +1883,27 @@ button {
    Mobile Responsiveness & Media Queries
    ========================================================================== */
 
+/* Checkout Page */
+.checkout-page {
+  padding-top: 120px;
+  padding-bottom: 100px;
+  background: #FDFBF7;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+}
+
+/* ======================================================
+   Tablet: ≤ 1024px
+   ====================================================== */
 @media (max-width: 1024px) {
-  .hero-content {
+  .hero-inner {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
+    padding-bottom: 20px;
   }
 
   .hero-text p {
@@ -1924,48 +1950,161 @@ button {
   }
 }
 
+/* ======================================================
+   Mobile: ≤ 768px
+   ====================================================== */
 @media (max-width: 768px) {
-  .navbar {
-    background: var(--surface) !important;
-    box-shadow: var(--shadow-sm);
+
+  /* --- Navbar --- */
+  .nav-content {
+    padding: 0 5px;
   }
 
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  /* --- Hero --- */
   .hero {
-    padding-top: 100px;
+    padding: 90px 0 40px;
     min-height: auto;
-    padding-bottom: 60px;
+    overflow: visible;
   }
 
-  .hero-text h1 {
-    font-size: 2.5rem;
+  .hero-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    text-align: center !important;
+    padding-bottom: 30px !important;
   }
 
-  .trust-badges-hero {
-    gap: 20px;
-  }
-
-  .trust-badge-item {
-    font-size: 0.75rem;
-  }
-
-  .about-visuals-dual {
-    justify-content: center;
-  }
-
-  .rituals-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .philosophy-stats {
+  .hero-text {
+    display: flex;
     flex-direction: column;
-    gap: 30px;
     align-items: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+    margin: 0 0 20px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+    margin-bottom: 25px !important;
+    max-width: 100% !important;
+    padding: 0 5px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    margin-bottom: 30px !important;
+  }
+
+  .hero-cta-group .btn,
+  .btn-pill {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 16px 24px !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+  }
+
+  .hero-trust-indicators {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .trust-divider {
+    display: none;
+  }
+
+  /* Hero visual & decorations hidden on mobile */
+  .hero-visual,
+  .organic-shape,
+  .dot-pattern,
+  .image-blob {
+    display: none !important;
+  }
+
+  /* Proof bar — already in flow, just adjust spacing */
+  .hero-proof-bar-inline {
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  .proof-content {
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .quote-wrap {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .customer-social {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* --- About Section --- */
+  .about-section {
+    padding: 80px 0 !important;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  /* Hide the overlapping founder circle image on mobile — avoid layout chaos */
+  .about-img-founder {
+    display: none;
+  }
+
+  .about-img-main {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .about-features-list {
+    align-items: flex-start;
+  }
+
+  /* --- Philosophy Section --- */
+  .philosophy-section {
+    padding: 80px 0 !important;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
   }
 
   .philosophy-text {
     text-align: center;
-    padding: 0 10px;
+    padding: 0;
   }
 
   .philosophy-text p {
@@ -1973,104 +2112,309 @@ button {
     margin-right: auto;
   }
 
+  .philosophy-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .stat-item h3 {
+    font-size: 2.5rem;
+  }
+
+  /* Simplify philosophy visuals: hide the overlapping small image */
+  .philosophy-visuals {
+    justify-content: center;
+  }
+
   .phil-img-lg {
     width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 20px;
   }
 
   .phil-img-sm {
-    width: 45%;
-    left: 5%;
+    display: none;
+  }
+
+  /* --- Rituals Section --- */
+  .rituals-section {
+    padding: 80px 0 !important;
+  }
+
+  .rituals-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px;
+  }
+
+  /* --- Testimonials --- */
+  .testimonials-section {
+    padding: 80px 0 !important;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    padding: 25px;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+  }
+
+  /* --- Footer --- */
+  .footer {
+    padding: 60px 0 0;
   }
 
   .footer-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 35px;
     text-align: center;
   }
 
   .footer-brand p {
-    margin: 20px auto 30px;
+    margin: 15px auto 20px;
   }
 
   .social-links {
     justify-content: center;
   }
 
-  .footer-bottom-grid {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
+  .footer-links ul li a:hover {
+    padding-left: 0;
+  }
+
+  .newsletter-form button {
+    width: 100%;
   }
 
   .payment-methods {
     justify-content: center;
-  }
-
-  /* Product Page Mobile */
-  .sticky-cta-content {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
   }
 
-  .sticky-product-info {
-    display: none;
-    /* Hide product info on very small screens to save space */
+  .footer-bottom {
+    text-align: center;
+  }
+
+  /* --- Checkout Page --- */
+  .checkout-page {
+    padding-top: 90px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Override inline gridTemplateColumns on checkout */
+  div.checkout-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .order-summary-sidebar {
+    order: -1;
+  }
+
+  .checkout-form-container form {
+    padding: 25px !important;
+    border-radius: 20px !important;
+  }
+
+  /* Shipping grid: 2-col -> 1-col */
+  .checkout-form-container form > div > div[style] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Payment options stack */
+  .payment-options {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* --- QuickView Modal --- */
+  .quickview-container {
+    border-radius: 20px;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .quickview-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .quickview-image {
+    height: 260px;
+  }
+
+  .quickview-details {
+    padding: 25px !important;
+    gap: 15px;
+  }
+
+  .quickview-details h2 {
+    font-size: 1.6rem;
+  }
+
+  .quickview-benefits {
+    grid-template-columns: 1fr !important;
+  }
+
+  .quickview-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quickview-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* --- Product Page --- */
+  .product-page {
+    padding: 90px 0 60px;
   }
 
   .gallery-thumbs {
     overflow-x: auto;
     padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
   }
 
   .thumb-item {
     flex-shrink: 0;
   }
 
-  .quickview-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .quickview-details {
-    padding: 30px;
-  }
-
-  .tab-list {
+  .tab-nav {
+    gap: 20px;
     overflow-x: auto;
     padding-bottom: 5px;
+  }
+
+  .tab-btn {
     white-space: nowrap;
-    justify-content: flex-start;
+  }
+
+  .sticky-cta-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sticky-product-info {
+    display: none;
+  }
+
+  /* --- Cart Drawer --- */
+  .cart-drawer {
+    max-width: 100%;
+  }
+
+  /* --- Breadcrumbs --- */
+  .breadcrumbs {
+    margin-top: 90px;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  /* --- Products Grid --- */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .product-image {
+    height: 220px;
+  }
+
+  /* --- Section padding reduction --- */
+  .products-section,
+  .about-section {
+    padding: 70px 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+  }
+
+  /* --- Premium badge --- */
+  .premium-badge {
+    font-size: 0.75rem;
+    padding: 8px 16px;
   }
 }
 
+/* ======================================================
+   Small Mobile: ≤ 480px
+   ====================================================== */
 @media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2rem;
+
+  .navbar {
+    width: 95%;
+    height: 56px;
+    padding: 0 16px;
+    top: 8px;
   }
 
-  .hero-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
+  .logo {
+    font-size: 1.1rem;
   }
 
-  .btn {
-    width: 100%;
-    margin-left: 0 !important;
+  .hero-title {
+    font-size: 1.7rem !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.3px !important;
   }
 
-  .trust-badges-hero {
+  .hero-description {
+    font-size: 0.95rem !important;
+  }
+
+  .btn-pill {
+    font-size: 0.9rem;
+    padding: 14px 20px !important;
+  }
+
+  .rituals-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    height: 260px;
+  }
+
+  .philosophy-stats {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
 
-  .section-label {
-    letter-spacing: 2px;
+  .stat-item h3 {
+    font-size: 2rem;
   }
 
-  .about-img-founder {
-    width: 50%;
-    right: 0;
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .testimonial-card {
+    padding: 20px;
+  }
+
+  .proof-content {
+    padding: 15px;
+  }
+
+  .container {
+    padding: 0 15px;
   }
 }
 
@@ -2425,3 +2769,4 @@ button {
   font-size: 0.9rem;
   font-weight: 500;
 }
+

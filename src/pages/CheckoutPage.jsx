@@ -27,7 +27,7 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="checkout-page fade-in" style={{ paddingTop: '120px', paddingBottom: '100px', background: '#FDFBF7' }}>
+    <div className="checkout-page fade-in">
       <div className="container">
         <Link to="/shop" className="back-link" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '40px', color: 'var(--text-muted)' }}>
           <ArrowLeft size={18} /> Back to Shop
@@ -35,7 +35,7 @@ const CheckoutPage = () => {
 
         <h1 className="section-title" style={{ marginBottom: '60px' }}>Complete Your Order</h1>
 
-        <div className="checkout-grid" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '60px' }}>
+        <div className="checkout-grid" style={{ gap: '60px' }}>
           <div className="checkout-form-container">
             <form onSubmit={handleSubmit} style={{ background: 'white', padding: '50px', borderRadius: '30px', boxShadow: '0 15px 40px rgba(0,0,0,0.05)' }}>
               <div className="form-section" style={{ marginBottom: '40px' }}>

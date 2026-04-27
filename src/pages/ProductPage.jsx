@@ -7,6 +7,7 @@ import {
   CheckCircle2 
 } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import { useCart } from '../context/CartContext';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [showSticky, setShowSticky] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const { addToCart } = useCart();
 
   // Mock gallery for demo
   const gallery = product ? [
@@ -100,7 +102,7 @@ const ProductPage = () => {
             </div>
 
             <p className="product-price" style={{ fontSize: '2rem', fontWeight: '700', color: 'var(--primary)', marginBottom: '20px' }}>
-              ${product.price.toFixed(2)}
+              ₹{product.price.toLocaleString('en-IN')}
             </p>
             
             <p className="product-desc" style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '30px', lineHeight: '1.7' }}>
@@ -113,7 +115,11 @@ const ProductPage = () => {
                 <span style={{ minWidth: '40px', textAlign: 'center', fontWeight: 'bold' }}>{quantity}</span>
                 <button onClick={() => setQuantity(quantity + 1)} style={{ padding: '10px 20px' }}>+</button>
               </div>
-              <button className="btn btn-primary add-to-cart" style={{ flex: 1, padding: '16px' }}>
+              <button 
+                className="btn btn-primary add-to-cart" 
+                style={{ flex: 1, padding: '16px' }}
+                onClick={() => addToCart(product, quantity)}
+              >
                 <ShoppingCart size={20} style={{ marginRight: '10px' }} /> Add to Cart
               </button>
             </div>
@@ -175,7 +181,7 @@ const ProductPage = () => {
                         <Truck size={24} color="var(--primary)" />
                         <div>
                           <strong>Free Shipping</strong>
-                          <p style={{fontSize: '0.9rem', color: 'var(--text-muted)'}}>On all orders over $50. Arrives in 3-5 business days.</p>
+                          <p style={{fontSize: '0.9rem', color: 'var(--text-muted)'}}>On all orders over ₹499. Arrives in 3-5 business days.</p>
                         </div>
                       </div>
                       <div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
@@ -281,8 +287,12 @@ const ProductPage = () => {
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
-              <span style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--primary)' }}>${product.price.toFixed(2)}</span>
-              <button className="btn btn-primary" style={{ padding: '12px 30px' }}>
+              <span style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--primary)' }}>₹{product.price.toLocaleString('en-IN')}</span>
+              <button 
+                className="btn btn-primary" 
+                style={{ padding: '12px 30px' }}
+                onClick={() => addToCart(product, quantity)}
+              >
                 Add to Cart
               </button>
             </div>

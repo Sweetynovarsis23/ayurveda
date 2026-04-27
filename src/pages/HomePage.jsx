@@ -168,8 +168,8 @@ const HomePage = () => {
         <div className="container">
           <div className="philosophy-grid">
             <div className="philosophy-text">
-              <span className="section-label" style={{ color: 'var(--secondary)' }}>OUR PHILOSOPHY</span>
-              <h2>Tradition meets the Laboratory.</h2>
+              <span className="section-label">OUR PHILOSOPHY</span>
+              <h2>Tradition meets the <span className="text-highlight">Laboratory.</span></h2>
               <p>We don't just replicate ancient recipes; we validate them. Prana Essence bridges the gap between 5,000 years of Ayurvedic tradition and rigorous modern dermatological science.</p>
               <p>Every herb is ethically wild-harvested at its peak potency, then extracted using cold-press technology.</p>
               <div className="philosophy-stats">
@@ -248,22 +248,22 @@ const HomePage = () => {
             </span>
             <h2 className="section-title">Discover How Prana Essence Has Transformed Lives.</h2>
           </div>
-          <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+          <div className="testimonials-grid">
             {testimonials.map(testimonial => (
-              <div key={testimonial.id} className="testimonial-card" style={{ background: '#f5f7f5', padding: '40px', borderRadius: '30px', position: 'relative' }}>
-                <div style={{ display: 'flex', color: 'var(--secondary)', marginBottom: '20px' }}>
+              <div key={testimonial.id} className="testimonial-card">
+                <div className="testimonial-stars">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} size={18} fill="currentColor" />
                   ))}
                 </div>
-                <p style={{ fontSize: '1.05rem', color: 'var(--text)', marginBottom: '30px', fontStyle: 'italic', lineHeight: '1.7' }}>
+                <p className="testimonial-text">
                   "{testimonial.text}"
                 </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                  <img src={testimonial.image} alt={testimonial.name} style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }} />
-                  <div>
-                    <h4 style={{ fontSize: '1rem', marginBottom: '2px', color: 'var(--primary)' }}>{testimonial.name}</h4>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{testimonial.role}</span>
+                <div className="testimonial-author">
+                  <img src={testimonial.image} alt={testimonial.name} className="author-img" />
+                  <div className="author-info">
+                    <h4 className="author-name">{testimonial.name}</h4>
+                    <span className="author-role">{testimonial.role}</span>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,9 @@
 import { Eye, ShoppingCart, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product, onQuickView }) => {
+  const { addToCart } = useCart();
   const isLowStock = product.stock < 10;
 
   return (
@@ -17,7 +19,7 @@ const ProductCard = ({ product, onQuickView }) => {
           <button className="view-btn" title="Quick View" onClick={onQuickView}>
             <Eye size={22} />
           </button>
-          <button className="add-btn" title="Add to Cart">
+          <button className="add-btn" title="Add to Cart" onClick={() => addToCart(product)}>
             <ShoppingCart size={22} />
           </button>
         </div>
@@ -33,7 +35,7 @@ const ProductCard = ({ product, onQuickView }) => {
         <Link to={`/product/${product.id}`}>
           <h3>{product.name}</h3>
         </Link>
-        <p className="price">${product.price.toFixed(2)}</p>
+        <p className="price">₹{product.price.toLocaleString('en-IN')}</p>
       </div>
     </div>
   );

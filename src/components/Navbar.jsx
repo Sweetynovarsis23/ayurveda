@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Menu, X, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cartCount, setIsCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,16 +32,15 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <button className="cart-btn">
+          <button className="cart-btn" onClick={() => setIsCartOpen(true)}>
             <ShoppingCart size={24} />
-            <span className="cart-count">0</span>
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           </button>
           <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
-
     </nav>
   );
 };

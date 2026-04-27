@@ -1,8 +1,10 @@
 import React from 'react';
 import { X, ShoppingCart, Star, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const QuickViewModal = ({ product, isOpen, onClose }) => {
+  const { addToCart } = useCart();
   if (!isOpen || !product) return null;
 
   return (
@@ -27,7 +29,7 @@ const QuickViewModal = ({ product, isOpen, onClose }) => {
             <h2>{product.name}</h2>
             
             <div className="rating-summary">
-              <div className="stars">
+              <div className="stars" style={{ color: 'var(--secondary)' }}>
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={16} fill={i < Math.floor(product.rating) ? "currentColor" : "none"} />
                 ))}
@@ -35,12 +37,12 @@ const QuickViewModal = ({ product, isOpen, onClose }) => {
               <span className="review-count">({product.reviewCount} Reviews)</span>
             </div>
 
-            <p className="product-price">${product.price.toFixed(2)}</p>
+            <p className="product-price">₹{product.price.toLocaleString('en-IN')}</p>
             
             <p className="quickview-desc">{product.description}</p>
             
             <div className="quickview-actions">
-              <button className="btn btn-primary add-to-cart">
+              <button className="btn btn-primary add-to-cart" onClick={() => addToCart(product)}>
                 <ShoppingCart size={20} /> Add to Cart
               </button>
               <Link to={`/product/${product.id}`} className="btn btn-outline" onClick={onClose}>
@@ -51,7 +53,7 @@ const QuickViewModal = ({ product, isOpen, onClose }) => {
             <div className="quickview-benefits">
               {product.benefits?.slice(0, 2).map((benefit, idx) => (
                 <div key={idx} className="benefit-item">
-                  <ShieldCheck size={18} color="var(--secondary)" />
+                  <ShieldCheck size={18} color="var(--primary)" />
                   <span>{benefit}</span>
                 </div>
               ))}
